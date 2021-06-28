@@ -1,6 +1,7 @@
-package de.tum.in.ase.eist.igt;
+package test.java;
 
 import de.tum.in.ase.eist.igt.Controller.Point2D;
+import de.tum.in.ase.eist.igt.GalacticGarbagemenApplication;
 import de.tum.in.ase.eist.igt.Model.GameObject;
 import de.tum.in.ase.eist.igt.Model.MovableObject;
 import de.tum.in.ase.eist.igt.Model.StationaryObject;
