@@ -34,10 +34,11 @@ public class SpaceCraft extends MovableObject {
     }
 
     /**
+     * TODO: get object into controller list and onto canvas
      * TODO: determine direction
      * */
-    public void shoot() {
-        Shot shot = new Shot(this.getPosition().getX(), this.getPosition().getY(), this.getDirection());
+    public Shot shoot() {
+        return new Shot(this.getPosition().getX(), this.getPosition().getY(), this.getDirection());
     }
 
     //public int getLifePoints() { return this.lifePoints; }

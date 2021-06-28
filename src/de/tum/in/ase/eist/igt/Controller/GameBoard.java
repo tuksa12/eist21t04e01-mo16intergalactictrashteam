@@ -155,5 +155,5 @@ public class GameBoard {
         }
     }
 
-
+    public void spacecraftShoot() { gameObjects.add(getPlayerSpaceCraft().shoot()); }
 }

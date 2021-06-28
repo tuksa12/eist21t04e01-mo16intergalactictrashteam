@@ -2,9 +2,11 @@ package de.tum.in.ase.eist.igt.View;
 
 import de.tum.in.ase.eist.igt.Controller.*;
 import de.tum.in.ase.eist.igt.Model.GameObject;
+import de.tum.in.ase.eist.igt.Model.SpaceCraft;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
@@ -195,6 +197,13 @@ public class GameBoardUI extends Canvas {
 
 	}
 
+
+	/**
+     * Creates keyboard input for the GameBoardUI by adding an event handler see    {@link KeyboardInput#KeyboardInput(Scene, GameBoardUI, SpaceCraft)}.
+     * */
+    public void setKeyboardInput(Scene scene){
+        this.keyboardInput = new KeyboardInput(scene, this, gameBoard.getPlayerSpaceCraft());
+    }
 
 //	private void  paintObstacle(GameObject object){
 //		Point2D carPosition = object.getPosition();
