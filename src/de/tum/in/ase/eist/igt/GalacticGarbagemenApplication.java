@@ -21,6 +21,8 @@ public class GalacticGarbagemenApplication extends Application {
 	private static final int GRID_LAYOUT_PADDING = 5;
 	private static final int GRID_LAYOUT_PREF_HEIGHT = 350;
 	private static final int GRID_LAYOUT_PREF_WIDTH = 505;
+	private GameBoardUI gameBoardUI;
+	private GameToolBar gameToolBar;
 
 	/**
 	 * Starts the Bumpers Window by setting up a new tool bar, a new user interface and adding them to the stage.
@@ -91,5 +93,13 @@ public class GalacticGarbagemenApplication extends Application {
 	 */
 	public static void startApp(String[] args) {
 		launch(args);
+	}
+
+	public GameBoardUI getGameBoardUI() {
+		return gameBoardUI;
+	}
+
+	public GameToolBar getGameToolBar() {
+		return gameToolBar;
 	}
 }

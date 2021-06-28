@@ -7,6 +7,10 @@ import org.junit.Test;
 
 public class TestInitialization {
 
+    public static void main(String[] args) {
+
+    }
+
 
     /**
      * Test the initialization of the game board (controller), dont test any javafx related calls, rather verify that
