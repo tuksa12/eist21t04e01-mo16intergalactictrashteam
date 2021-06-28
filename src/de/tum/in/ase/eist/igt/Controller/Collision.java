@@ -15,17 +15,17 @@ public class Collision {
 
     protected final GameObject gameObject1;
     protected final GameObject gameObject2;
-    private final boolean crash;
+    private final boolean isCollision;
 
     public Collision(GameObject gameObject1, GameObject gameObject2) { // Perhaps multiple constructors depending on the collision
         this.gameObject1 = gameObject1;
         this.gameObject2 = gameObject2;
         assert this.gameObject2.getClass() != SpaceCraft.class;
-        this.crash = detectCollision();
+        this.isCollision = detectCollision();
     }
 
     public boolean isCollision() {
-        return crash;
+        return isCollision;
     }
 
     public boolean detectCollision() {

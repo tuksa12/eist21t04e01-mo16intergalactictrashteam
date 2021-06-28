@@ -16,11 +16,13 @@ public class KeyboardInput {
 
     private final SpaceCraft spaceCraft;
     private final GameBoardUI gameBoardUI;
+    private final Scene scene;
 
     public KeyboardInput(Scene scene, GameBoardUI gameBoardUI, SpaceCraft userSpaceCraft) {
         this.spaceCraft = userSpaceCraft;
         this.gameBoardUI = gameBoardUI;
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, this::keyPressed);
+        this.scene = scene;
+        this.scene.addEventHandler(KeyEvent.KEY_PRESSED, this::keyPressed);
     }
 
     /**
@@ -54,5 +56,7 @@ public class KeyboardInput {
 
         // System.out.println(keyInput.getCharacter()); // debug
     }
+
+    public void reset() { scene.addEventHandler(KeyEvent.KEY_PRESSED, this::keyPressed);}
 
 }

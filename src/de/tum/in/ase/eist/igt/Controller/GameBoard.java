@@ -38,12 +38,12 @@ public class GameBoard {
      *
      * */
     private void createGameObjects() {
-        // spacecraft
-        this.gameObjects.add(this.player.getSpaceCraft());
-
         // planets
         this.gameObjects.add(new Planet(442.0, 442.0, 42, 260,260,"planet.png"));
         this.gameObjects.add(new Planet(100.0, 78.0, 9000,140,140,"planet-brown.png"));
+
+        // spacecraft
+        this.gameObjects.add(this.player.getSpaceCraft());
 
         // generate debris of semi random size, velocity and start point
         for (int i = 0; i < NUMBER_OF_DEBRIS; i++){
@@ -121,6 +121,8 @@ public class GameBoard {
 
         // TODO: spacecraft planet
         for (GameObject gameObject : gameObjects){
+            if (gameObject == getPlayerSpaceCraft()) continue;
+
             Collision collision = new Collision(getPlayerSpaceCraft(), gameObject);
 
             if (collision.isCollision()) {
