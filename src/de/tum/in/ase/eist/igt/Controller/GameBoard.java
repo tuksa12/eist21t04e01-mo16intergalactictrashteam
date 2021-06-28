@@ -19,7 +19,7 @@ public class GameBoard {
     // private static final int NUMBER_OF_PLANETS = 3;
     private static final long RANDOM_SEED = 42;
     private static final int MAX_DEBRIS_MASS = 500;
-    private static final int MAX_DEBRIS_SPEED = 9;
+    private static final int MAX_DEBRIS_SPEED = 2;
 
 
     public GameBoard(Dimension2D size) {
@@ -117,18 +117,15 @@ public class GameBoard {
 
         this.player.getSpaceCraft().move(size);
 
-        /*// iterate through all debris and check if it is crunched
-        for (Debris debris : debris) {
-            *//*if (debris.isCrunched()) {
-                // because there is no need to check for a collision
-                continue;
-            }*//*
+        // collision detection
 
-            Collision collision = new Collision(player.getSpaceCraft(), debris);
+        // TODO: spacecraft planet
+        for (GameObject gameObject : gameObjects){
+            Collision collision = new Collision(getPlayerSpaceCraft(), gameObject);
 
-            if (collision.isCrash()) {
-                Car winner = collision.evaluate();
-                Car loser = collision.evaluateLoser();
+            if (collision.isCollision()) {
+                gameOutcome = collision.evaluate();
+                /*Car loser = collision.evaluateLoser();
                 printWinner(winner);
                 loserCars.add(loser);
 
@@ -138,10 +135,24 @@ public class GameBoard {
                     gameOutcome = GameOutcome.WON;
                 } else{
                     gameOutcome = GameOutcome.LOST;
-                }
+                }*/
 
             }
-        }*/
+        }
+
+        // TODO: spacecraft debris
+
+        // TODO: debris planet
+
+        // iterate through all game objects and check for collisions
+        for (Debris debris : this.getDebris()) {
+
+            for (GameObject gameObject : gameObjects){
+                Collision collision = new Collision(debris, gameObject);
+                collision.evaluate();
+            }
+            // TODO: handle off board?
+        }
     }
 
 
