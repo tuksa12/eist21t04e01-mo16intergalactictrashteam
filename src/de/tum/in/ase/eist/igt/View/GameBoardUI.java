@@ -62,6 +62,10 @@ public class GameBoardUI extends Canvas {
 		return gameBoard;
 	}
 
+	public KeyboardInput getKeyboardInput() {
+		return keyboardInput;
+	}
+
 	/**
 	 * Removes all existing cars from the game board and re-adds them. Player car is
 	 * reset to default starting position. Renders graphics.
