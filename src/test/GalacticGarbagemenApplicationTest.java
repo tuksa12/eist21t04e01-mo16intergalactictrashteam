@@ -2,23 +2,30 @@ import de.tum.in.ase.eist.igt.Controller.Point2D;
 import de.tum.in.ase.eist.igt.GalacticGarbagemenApplication;
 import de.tum.in.ase.eist.igt.Model.GameObject;
 import de.tum.in.ase.eist.igt.Model.MovableObject;
+import de.tum.in.ase.eist.igt.Model.Shot;
 import de.tum.in.ase.eist.igt.Model.StationaryObject;
 import javafx.stage.Stage;
 import junit.framework.TestCase;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.easymock.*;
 
-public class GalacticGarbagemenApplicationTest extends TestCase {
+import static org.easymock.EasyMock.*;
+
+public class GalacticGarbagemenApplicationTest {
 
     private GalacticGarbagemenApplication app;
+    @Mock
+    private Shot s;
 
 
 
     @Before
     public void setUp() throws Exception {
-        super.setUp();
         app = new GalacticGarbagemenApplication();
         app.start(new Stage());
+        s  = app.getGameBoardUI().getGameBoard().getPlayerSpaceCraft().shoot();
     }
 
     @Test
@@ -27,7 +34,7 @@ public class GalacticGarbagemenApplicationTest extends TestCase {
             if(object instanceof StationaryObject) {
                 Point2D start = object.getPosition();
                 object.setPosition(object.getPosition().getX() + 1, object.getPosition().getY());
-                assertEquals(start.getX(), object.getPosition().getX());
+                Assert.assertEquals(start.getX(), object.getPosition().getX());
             }
         }
     }
@@ -38,7 +45,7 @@ public class GalacticGarbagemenApplicationTest extends TestCase {
             if(object instanceof MovableObject) {
                 Point2D start = object.getPosition();
                 object.setPosition(object.getPosition().getX() + 1, object.getPosition().getY());
-                assertFalse(start.getX() == object.getPosition().getX());
+                Assert.assertFalse(start.getX() == object.getPosition().getX());
             }
         }
     }
@@ -56,7 +63,7 @@ public class GalacticGarbagemenApplicationTest extends TestCase {
         int expectedEndSpeed = app.getGameBoardUI().getGameBoard().getPlayerSpaceCraft().getSpeed() + app.getGameBoardUI().getGameBoard().getPlayerSpaceCraft().getAcceleration();
         app.getGameBoardUI().getGameBoard().getPlayerSpaceCraft().accelerate();
         int actualEndSpeed = app.getGameBoardUI().getGameBoard().getPlayerSpaceCraft().getSpeed();
-        assertEquals(expectedEndSpeed, actualEndSpeed);
+        Assert.assertEquals(expectedEndSpeed, actualEndSpeed);
     }
 
     @Test
@@ -64,11 +71,14 @@ public class GalacticGarbagemenApplicationTest extends TestCase {
         int expectedEndSpeed = Math.max(0, app.getGameBoardUI().getGameBoard().getPlayerSpaceCraft().getSpeed() - app.getGameBoardUI().getGameBoard().getPlayerSpaceCraft().getAcceleration());
         app.getGameBoardUI().getGameBoard().getPlayerSpaceCraft().decelerate();
         int actualEndSpeed = app.getGameBoardUI().getGameBoard().getPlayerSpaceCraft().getSpeed();
-        assertEquals(expectedEndSpeed, actualEndSpeed);
+        Assert.assertEquals(expectedEndSpeed, actualEndSpeed);
     }
 
     @Test
-    public void mockShot() {
-
+    public void mockShotTest() {
+        expect(s.increaseSpeed()).andReturn(true);
+        replay(s);
+        boolean actual = s.increaseSpeed();
+        Assert.assertTrue(actual);
     }
 }
