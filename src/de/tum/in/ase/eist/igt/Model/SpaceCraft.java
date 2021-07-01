@@ -41,6 +41,4 @@ public class SpaceCraft extends MovableObject {
         return new Shot(this.getPosition().getX(), this.getPosition().getY(), this.getDirection());
     }
 
-    //public int getLifePoints() { return this.lifePoints; }
-
 }

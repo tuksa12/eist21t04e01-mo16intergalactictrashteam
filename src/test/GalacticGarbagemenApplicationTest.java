@@ -1,5 +1,3 @@
-package test.java;
-
 import de.tum.in.ase.eist.igt.Controller.Point2D;
 import de.tum.in.ase.eist.igt.GalacticGarbagemenApplication;
 import de.tum.in.ase.eist.igt.Model.GameObject;
@@ -47,7 +45,10 @@ public class GalacticGarbagemenApplicationTest extends TestCase {
 
     @Test
     public void testObjectOutOfBounds() {
-
+        /*
+        create a new constructor in game board that puts just 1 debris close to the edge and running towards the edge
+        when it runs out of bounds, check if it erased
+         */
     }
 
     @Test

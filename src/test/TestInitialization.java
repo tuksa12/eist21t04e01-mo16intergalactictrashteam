@@ -1,5 +1,3 @@
-package test.java;
-
 import de.tum.in.ase.eist.igt.Controller.Dimension2D;
 import de.tum.in.ase.eist.igt.Controller.GameBoard;
 import de.tum.in.ase.eist.igt.View.GameBoardUI;
