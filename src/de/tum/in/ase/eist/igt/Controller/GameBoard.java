@@ -15,7 +15,7 @@ public class GameBoard {
     private final Random random;
 
     // initialisation variables
-    private static final int NUMBER_OF_DEBRIS = 5;
+    public static final int NUMBER_OF_DEBRIS = 5;
     // private static final int NUMBER_OF_PLANETS = 3;
     private static final long RANDOM_SEED = 42;
     private static final int MAX_DEBRIS_MASS = 500;

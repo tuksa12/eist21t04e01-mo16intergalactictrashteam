@@ -22,7 +22,6 @@ public class GalacticGarbagemenApplicationTest {
     private Shot s;
 
 
-
     @Before
     public void setUp() throws Exception {
         app = new GalacticGarbagemenApplication();
