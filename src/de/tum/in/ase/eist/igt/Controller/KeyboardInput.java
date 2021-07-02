@@ -29,7 +29,7 @@ public class KeyboardInput {
      * Handles keyboard input and manipulates the space craft accordingly with acceleration / deceleration and tilting
      *  operations.
      * */
-    protected void keyPressed(KeyEvent keyInput) {
+    public void keyPressed(KeyEvent keyInput) {
 
         int ANGLE_ON_TURN = 3;
         switch (keyInput.getCode()) {
