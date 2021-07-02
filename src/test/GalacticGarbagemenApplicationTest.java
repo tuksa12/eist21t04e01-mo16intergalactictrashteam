@@ -1,3 +1,5 @@
+package test;
+
 import de.tum.in.ase.eist.igt.Controller.Point2D;
 import de.tum.in.ase.eist.igt.GalacticGarbagemenApplication;
 import de.tum.in.ase.eist.igt.Model.GameObject;
