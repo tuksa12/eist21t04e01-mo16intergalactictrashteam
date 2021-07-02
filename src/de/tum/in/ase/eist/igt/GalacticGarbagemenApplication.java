@@ -21,12 +21,11 @@ public class GalacticGarbagemenApplication extends Application {
 	private static final int GRID_LAYOUT_PADDING = 5;
 	private static final int GRID_LAYOUT_PREF_HEIGHT = 350;
 	private static final int GRID_LAYOUT_PREF_WIDTH = 505;
+	private GameBoardUI gameBoardUI;
+	private GameToolBar gameToolBar;
 
 	/**
 	 * Starts the Bumpers Window by setting up a new tool bar, a new user interface and adding them to the stage.
-	 *
-     * @implNote Currently handles keyboard input due to not finding the Bug with using KeyboardInput.keyPressed() in
-     *  GameBoardUI.
      *
 	 * @param primaryStage the primary stage for this application, onto which the application scene can be set.
 	 */
@@ -46,25 +45,8 @@ public class GalacticGarbagemenApplication extends Application {
 		primaryStage.setOnCloseRequest(closeEvent -> gameBoardUI.stopGame());
 		primaryStage.show();
 
-		/* keyboard input handling
-		 * Note: somehow the .addEventHandler() only recognizes keyboard input when invoked on Scene and not on
-		 *  GameBoardUI, therefore we opted for fixing this bug here but try to find a better solution. */
-        scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            switch (key.getCode()) {
-                case W, UP -> {
-                    gameBoardUI.getGameBoard().getPlayerSpaceCraft().accelerate();
-                }
-                case S, DOWN -> {
-                    gameBoardUI.getGameBoard().getPlayerSpaceCraft().decelerate();
-                }
-                case A, LEFT -> {
-                    gameBoardUI.getGameBoard().getPlayerSpaceCraft().setDirection(3);
-                }
-                case D, RIGHT -> {
-                    gameBoardUI.getGameBoard().getPlayerSpaceCraft().setDirection(-3);
-                }
-            }
-        });
+		// add keyboard input handling to scene
+		gameBoardUI.setKeyboardInput(scene);
 	}
 
 	/**
@@ -91,5 +73,13 @@ public class GalacticGarbagemenApplication extends Application {
 	 */
 	public static void startApp(String[] args) {
 		launch(args);
+	}
+
+	public GameBoardUI getGameBoardUI() {
+		return gameBoardUI;
+	}
+
+	public GameToolBar getGameToolBar() {
+		return gameToolBar;
 	}
 }

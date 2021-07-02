@@ -13,5 +13,8 @@ public class Shot extends MovableObject {
         super(startX, startY, 0, SHOT_WIDTH, SHOT_HEIGHT, SHOT_IMAGE_FILE, INITIAL_SPEED, ACCELERATION, direction);
     }
 
+    public boolean increaseSpeed() {
+        return false;
+    }
 }
 

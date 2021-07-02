@@ -1,5 +1,3 @@
-package test.java;
-
 /**
  * Class for collecting test case ideas and for implementing first tests.
  * */

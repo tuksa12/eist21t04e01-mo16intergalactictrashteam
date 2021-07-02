@@ -2,9 +2,11 @@ package de.tum.in.ase.eist.igt.View;
 
 import de.tum.in.ase.eist.igt.Controller.*;
 import de.tum.in.ase.eist.igt.Model.GameObject;
+import de.tum.in.ase.eist.igt.Model.SpaceCraft;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
@@ -60,6 +62,10 @@ public class GameBoardUI extends Canvas {
 		return gameBoard;
 	}
 
+	public KeyboardInput getKeyboardInput() {
+		return keyboardInput;
+	}
+
 	/**
 	 * Removes all existing cars from the game board and re-adds them. Player car is
 	 * reset to default starting position. Renders graphics.
@@ -69,6 +75,7 @@ public class GameBoardUI extends Canvas {
 		setupImageCache();
 		this.gameToolBar.updateToolBarStatus(false);
 		paint();
+		// keyboardInput.reset();
 		
 		// d try to get keyboard input
         //this.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {System.out.println(key.getCharacter()); });
@@ -158,13 +165,13 @@ public class GameBoardUI extends Canvas {
 			// updates car positions and re-renders graphics
 			this.gameBoard.update();
 			// when this.gameBoard.getOutcome() is OPEN, do nothing
-			/*if (this.gameBoard.getGameOutcome() == GameOutcome.LOST) {
+			if (this.gameBoard.getGameOutcome() == GameOutcome.LOST) {
 				showAsyncAlert("Oh.. you lost.");
 				this.stopGame();
 			} else if (this.gameBoard.getGameOutcome() == GameOutcome.WON) {
 				showAsyncAlert("Congratulations! You won!!");
 				this.stopGame();
-			}*/
+			}
 			paint();
 		}
 	}
@@ -195,6 +202,13 @@ public class GameBoardUI extends Canvas {
 
 	}
 
+
+	/**
+     * Creates keyboard input for the GameBoardUI by adding an event handler see    {@link KeyboardInput#KeyboardInput(Scene, GameBoardUI, SpaceCraft)}.
+     * */
+    public void setKeyboardInput(Scene scene){
+        this.keyboardInput = new KeyboardInput(scene, this, gameBoard.getPlayerSpaceCraft());
+    }
 
 //	private void  paintObstacle(GameObject object){
 //		Point2D carPosition = object.getPosition();

@@ -89,6 +89,10 @@ public abstract class MovableObject extends GameObject {
 
     public int getDirection() { return this.direction; }
 
+    public int getAcceleration() {
+        return acceleration;
+    }
+
     /* ----------- SETTERS ---------- */
     public void setSpeed(int speed) { this.speed = speed; }
 
