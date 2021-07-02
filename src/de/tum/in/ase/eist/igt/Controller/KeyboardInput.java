@@ -28,7 +28,7 @@ public class KeyboardInput {
      *
      * TODO: add shooting functionality
      * */
-    protected void keyPressed(KeyEvent keyInput) {
+    public void keyPressed(KeyEvent keyInput) {
 
         switch (keyInput.getCode()) {
             case W, UP -> {
